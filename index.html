@@ -2,38 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>SSO Test</title>
-  <style>
-    body { font-family: Segoe UI, Arial, sans-serif; margin: 24px; }
-    button { margin-right: 8px; margin-bottom: 8px; padding: 8px 12px; }
-    pre { background:#f5f5f5; padding:12px; border:1px solid #ddd; overflow:auto; }
-  </style>
 </head>
 
 <body>
   <h1>SSO Test Page</h1>
 
-  <div>
-    <button onclick="location.href='/.auth/login/aad?post_login_redirect_uri=/'button onclick="location.href='/.auth/logout?post_logout_redirect_uri=/'<button onclick="getUser()">
-      Get User Info
-    </button>
-  </div>
+  <!-- Login -->
+  <button onclick="location.href='/.auth/login/aad?post_login_redirect_uri=Logout -->
+  <button onclick="location.href='/.auth/logout?post_logout_redirect_uri=<br>
+
+  <button onclick="getUser()">Get User Info</button>
 
   <pre id="output">Click "Get User Info" to display /.auth/me</pre>
 
   <script>
     async function getUser() {
-      try {
-        const res = await fetch("/.auth/me");
-        const data = await res.json();
-        document.getElementById("output").textContent =
-          JSON.stringify(data, null, 2);
-      } catch (e) {
-        document.getElementById("output").textContent =
-          "Failed to read /.auth/me: " + e;
-      }
+      const res = await fetch("/.auth/me");
+      const data = await res.json();
+      document.getElementById("output").innerText =
+        JSON.stringify(data, null, 2);
     }
   </script>
 </body>
 </html>
+``
