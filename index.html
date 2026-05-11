@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SSO Test</title>
+</head>
+<body>
+  <h1>SSO Test Page</h1>
+
+  <a href="/.auth/login/aad">Login</a>
+  <br><br>
+
+  <button onclick="getUser()">Get User Info</button>
+
+  <pre id="output"></pre>
+
+  <script>
+    async function getUser() {
+      const res = await fetch("/.auth/me");
+      const data = await res.json();
+      document.getElementById("output").innerText =
+        JSON.stringify(data, null, 2);
+    }
+  </script>
+</body>
+</html>
