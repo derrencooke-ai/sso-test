@@ -1,4 +1,9 @@
 {
+  "networking": {
+    "allowedIpRanges": [
+      "172.167.75.58/32"
+    ]
+  },
   "routes": [
     {
       "route": "/.auth/*",
