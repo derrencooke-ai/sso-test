@@ -14,19 +14,32 @@
 <body>
   <h1>SSO Test Page</h1>
 
-  <button type="button"
-    onclick="window.location.href='/.auth/login/aad?post_login_redirect_uri=/'k="window.location.href='/.auth/logout?post_logout_redirect_uri=/'getUser()">
-    Get User Info
-  </button>
+  <button id="btnLogin" type="button">Login</button>
+  <button id="btnLogout" type="button">Logout</button>
+  <button id="btnMe" type="button">Get User Info</button>
 
   <pre id="output">Click "Get User Info" to display /.auth/me</pre>
 
   <script>
-    async function getUser() {
+    // Azure Static Web Apps built-in auth endpoints:
+    //  - Login (Entra ID): /.auth/login/aad
+    //  - Logout:          /.auth/logout
+    //  - User info:       /.auth/me
+    // These are provided by the SWA platform. 
+
+    document.getElementById("btnLogin").addEventListener("click", () => {
+      window.location.href = "/.auth/login/aad?post_login_redirect_uri=/";
+    });
+
+    document.getElementById("btnLogout").addEventListener("click", () => {
+      window.location.href = "/.auth/logout?post_logout_redirect_uri=/";
+    });
+
+    document.getElementById("btnMe").addEventListener("click", async () => {
       const res = await fetch("/.auth/me");
       const data = await res.json();
       document.getElementById("output").textContent = JSON.stringify(data, null, 2);
-    }
+    });
   </script>
 </body>
 </html>
